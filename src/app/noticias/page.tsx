@@ -41,7 +41,7 @@ export default function NewsPage() {
                   <li key={y}>
                     <a href={`#ano-${y}`} className="flex justify-between text-[0.9375rem] text-ink-800 hover:text-brand-700">
                       {y}
-                      <span className="text-ink-400">{byYear[y]?.length}</span>
+                      <span className="text-ink-500">{byYear[y]?.length}</span>
                     </a>
                   </li>
                 ))}

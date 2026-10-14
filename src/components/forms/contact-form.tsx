@@ -361,7 +361,7 @@ function invalid(id: string, error?: string) {
 
 function inputClass(error?: string) {
   return cn(
-    'block h-12 w-full border bg-white px-4 text-[0.9375rem] text-ink-950 transition-colors placeholder:text-ink-400 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-0',
+    'block h-12 w-full border bg-white px-4 text-[0.9375rem] text-ink-950 transition-colors placeholder:text-ink-500 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-0',
     error
       ? 'border-red-700 focus-visible:outline-red-700'
       : 'border-ink-300 hover:border-ink-400 focus:border-brand-600 focus-visible:outline-brand-600',

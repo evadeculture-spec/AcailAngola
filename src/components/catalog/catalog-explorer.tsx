@@ -65,7 +65,7 @@ export function CatalogExplorer({ products, sectors }: Props) {
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Pesquisar: varão, gases, blocos, grua…"
               autoComplete="off"
-              className="h-12 w-full border border-ink-300 bg-white pr-11 pl-12 text-[0.9375rem] text-ink-950 placeholder:text-ink-400 focus:border-brand-600 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-brand-600"
+              className="h-12 w-full border border-ink-300 bg-white pr-11 pl-12 text-[0.9375rem] text-ink-950 placeholder:text-ink-500 focus:border-brand-600 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-brand-600"
             />
             {query && (
               <button
@@ -97,7 +97,7 @@ export function CatalogExplorer({ products, sectors }: Props) {
                 >
                   {s.shortName}
                   {count !== undefined && (
-                    <span className={cn('text-xs', active ? 'text-ink-300' : 'text-ink-400')}>{count}</span>
+                    <span className={cn('text-xs', active ? 'text-ink-300' : 'text-ink-500')}>{count}</span>
                   )}
                 </button>
               )

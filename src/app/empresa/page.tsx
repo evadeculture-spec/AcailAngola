@@ -39,9 +39,12 @@ export default function CompanyPage() {
             <h2 id="historia" className="text-h2">
               Desde {company.foundingYear}
             </h2>
-            <p className="mt-8 font-display text-[5.5rem] leading-none font-extrabold tracking-tight text-ink-100 sm:text-[8rem]" aria-hidden>
-              {company.foundingYear}
-            </p>
+            {/* Elemento decorativo (SVG): o ano já está presente no título. */}
+            <svg aria-hidden viewBox="0 0 400 110" className="mt-8 w-64 sm:w-96">
+              <text x="0" y="96" className="fill-ink-100 font-display" fontSize="120" fontWeight="800" letterSpacing="-4">
+                {company.foundingYear}
+              </text>
+            </svg>
           </div>
           <div className="prose-corp lg:col-span-7 lg:col-start-6">
             <p className="text-lead text-ink-900">
@@ -81,7 +84,7 @@ export default function CompanyPage() {
               <Link href={`/areas-de-negocio/${s.slug}`} className="group flex h-full flex-col p-8 transition-colors hover:bg-brand-50/50">
                 <div className="flex items-center justify-between">
                   <SectorIcon slug={s.slug} className="size-7 text-brand-600" />
-                  <span className="font-mono text-xs text-ink-400">{String(s.order).padStart(2, '0')}</span>
+                  <span className="font-mono text-xs text-ink-500">{String(s.order).padStart(2, '0')}</span>
                 </div>
                 <h3 className="mt-6 text-h3 group-hover:text-brand-700">{s.name}</h3>
                 <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-600">{s.tagline}</p>
@@ -122,7 +125,7 @@ export default function CompanyPage() {
         <ol className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {values.map((v, i) => (
             <li key={v.title} className="border-t-2 border-brand-600 pt-6">
-              <span className="font-mono text-sm text-ink-400">{String(i + 1).padStart(2, '0')}</span>
+              <span className="font-mono text-sm text-ink-500">{String(i + 1).padStart(2, '0')}</span>
               <h3 className="mt-3 text-h3">{v.title}</h3>
               <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-600">{v.description}</p>
             </li>

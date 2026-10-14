@@ -12,7 +12,7 @@ export function Logo({ tone = 'dark', className }: { tone?: 'dark' | 'light'; cl
     <span className={cn('inline-flex items-center gap-3 select-none', className)}>
       <span aria-hidden className="block h-9 w-1 bg-brand-600" />
       <span className="flex flex-col leading-none">
-        <span className={cn('font-display text-[1.375rem] font-extrabold tracking-[0.04em]', main)}>ACAIL</span>
+        <span className={cn('font-display text-[1.375rem] font-extrabold tracking-[0.04em]', main)}>ACAIL</span>{' '}
         <span className={cn('mt-1 text-[0.625rem] font-semibold tracking-[0.42em] uppercase', sub)}>Angola</span>
       </span>
     </span>

@@ -1,6 +1,9 @@
 import { z } from 'zod'
 import type { DepartmentId, SectorSlug } from '@/types/content'
 
+// Evita a deteção de `eval` do Zod (compatível com a Content-Security-Policy sem 'unsafe-eval').
+z.config({ jitless: true })
+
 /** Áreas de interesse do formulário e departamento de destino. */
 export const interestAreas = [
   { value: 'siderurgia', label: 'Produtos Siderúrgicos', department: 'geral' },
