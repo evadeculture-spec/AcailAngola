@@ -12,6 +12,7 @@ export const news: NewsItem[] = [
   {
     slug: '2016-visita-ministerial-polo-industrial-viana',
     title: 'Visita ministerial ao Pólo Industrial de Viana destaca a ACAIL como exemplo de produção',
+    seoTitle: 'Visita ministerial ao Pólo Industrial de Viana (2016)',
     date: '2016-08',
     datePrecision: 'month',
     category: 'Imprensa',

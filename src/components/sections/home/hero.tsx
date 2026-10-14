@@ -13,7 +13,7 @@ export function HomeHero() {
   ]
   return (
     <section className="on-dark relative isolate overflow-hidden bg-ink-950 text-ink-300" aria-labelledby="hero-title">
-      <div aria-hidden className="absolute inset-0 -z-10 lg:left-[46%]">
+      <div aria-hidden className="absolute inset-0 -z-10 opacity-25 lg:left-[46%] lg:opacity-100">
         <TechnicalVisual visual="company" className="h-full w-full opacity-90" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/40 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-ink-950/30" />

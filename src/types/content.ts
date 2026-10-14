@@ -125,6 +125,8 @@ export interface Project {
 export interface NewsItem {
   slug: string
   title: string
+  /** Título curto para SEO (≤ 55 caracteres) quando o título é longo. */
+  seoTitle?: string
   /** ISO (AAAA-MM-DD) ou AAAA-MM quando só o mês é conhecido. */
   date: string
   datePrecision: 'day' | 'month' | 'year'

@@ -30,7 +30,18 @@ export function MediaFrame({ image, visual, label, index, className, sizes = '10
           className="object-cover"
         />
       ) : (
-        <TechnicalVisual visual={visual} label={label} index={index} className="absolute inset-0" />
+        <>
+          <TechnicalVisual visual={visual} label={label} className="absolute inset-0" />
+          {(label || index) && (
+            <span
+              aria-hidden
+              className="absolute bottom-[6%] left-[5%] max-w-[90%] truncate font-mono text-[0.6875rem] tracking-[0.2em] text-white/55 uppercase"
+            >
+              {index ? `${index}  /  ` : ''}
+              {label}
+            </span>
+          )}
+        </>
       )}
     </div>
   )

@@ -40,7 +40,7 @@ export function HomeCapability() {
                   <Icon aria-hidden className="size-5" strokeWidth={1.5} />
                 </span>
                 <div>
-                  <h3 className="text-lg font-semibold">{title}</h3>
+                  <h3 className="text-lg font-semibold text-white">{title}</h3>
                   <p className="mt-2 text-[0.9375rem] leading-relaxed">{text}</p>
                 </div>
               </li>

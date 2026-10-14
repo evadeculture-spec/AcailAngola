@@ -31,6 +31,7 @@ export function Header() {
   const mobileButtonRef = useRef<HTMLButtonElement>(null)
   const mobilePanelRef = useRef<HTMLDivElement>(null)
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const openedByHoverAt = useRef(0)
 
   // Fecha os menus ao mudar de página (ajuste de estado durante a renderização).
   if (prevPathname !== pathname) {
@@ -109,7 +110,18 @@ export function Header() {
 
   const openOnHover = () => {
     if (hoverTimer.current) clearTimeout(hoverTimer.current)
-    hoverTimer.current = setTimeout(() => setMegaOpen(true), 80)
+    hoverTimer.current = setTimeout(() => {
+      openedByHoverAt.current = Date.now()
+      setMegaOpen(true)
+    }, 80)
+  }
+  // Um clique logo após a abertura por hover não deve voltar a fechar o painel.
+  const toggleMega = () => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current)
+    const justOpenedByHover = megaOpen && Date.now() - openedByHoverAt.current < 600
+    openedByHoverAt.current = 0
+    if (justOpenedByHover) return
+    setMegaOpen((v) => !v)
   }
   const closeOnLeave = () => {
     if (hoverTimer.current) clearTimeout(hoverTimer.current)
@@ -135,14 +147,14 @@ export function Header() {
               const active = isActive(pathname, item.href)
               if (item.children) {
                 return (
-                  <li key={item.href} className="relative" onMouseEnter={openOnHover} onMouseLeave={closeOnLeave}>
+                  <li key={item.href} onMouseEnter={openOnHover} onMouseLeave={closeOnLeave}>
                     <div ref={megaWrapRef}>
                       <button
                         ref={megaButtonRef}
                         type="button"
                         aria-expanded={megaOpen}
                         aria-controls={megaId}
-                        onClick={() => setMegaOpen((v) => !v)}
+                        onClick={toggleMega}
                         className={cn(
                           'relative flex h-20 items-center gap-1.5 px-3 text-[0.9063rem] font-medium transition-colors',
                           active || megaOpen ? 'text-ink-950' : 'text-ink-600 hover:text-ink-950',
@@ -158,7 +170,7 @@ export function Header() {
                       <div
                         id={megaId}
                         hidden={!megaOpen}
-                        className="fixed inset-x-0 top-20 border-t border-ink-100 bg-white shadow-[0_24px_48px_-24px_rgba(18,22,26,0.25)]"
+                        className="absolute inset-x-0 top-full border-t border-ink-100 bg-white shadow-[0_24px_48px_-24px_rgba(18,22,26,0.25)]"
                       >
                         <div className="container-site grid grid-cols-12 gap-10 py-10">
                           <div className="col-span-4 border-r border-ink-100 pr-10">
@@ -219,9 +231,11 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <ButtonLink href="/contactos#formulario" size="md" className="hidden xl:inline-flex">
-            Solicitar Informações
-          </ButtonLink>
+          <div className="hidden xl:block">
+            <ButtonLink href="/contactos#formulario" size="md">
+              Solicitar Informações
+            </ButtonLink>
+          </div>
           <button
             ref={mobileButtonRef}
             type="button"
@@ -241,7 +255,7 @@ export function Header() {
         id={mobileId}
         ref={mobilePanelRef}
         hidden={!mobileOpen}
-        className="fixed inset-x-0 top-[4.5rem] bottom-0 overflow-y-auto border-t border-ink-100 bg-white lg:hidden"
+        className="absolute inset-x-0 top-full h-[calc(100dvh-4.5rem)] overflow-y-auto overscroll-contain border-t border-ink-100 bg-white lg:hidden"
       >
         <nav aria-label="Navegação principal (móvel)" className="container-site pt-4 pb-10">
           <ul className="divide-y divide-ink-100">

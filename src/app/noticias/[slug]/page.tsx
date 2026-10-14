@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: PageProps<'/noticias/[slug]'>
   const { slug } = await params
   const item = getNewsItem(slug)
   if (!item) return {}
-  return pageMetadata({ title: item.title, description: item.excerpt, path: `/noticias/${slug}`, type: 'article' })
+  return pageMetadata({ title: item.seoTitle ?? item.title, description: item.excerpt, path: `/noticias/${slug}`, type: 'article' })
 }
 
 export default async function NewsArticlePage({ params }: PageProps<'/noticias/[slug]'>) {

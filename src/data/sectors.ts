@@ -116,7 +116,7 @@ export const sectors: Sector[] = [
     department: 'prefabricados',
     visual: 'precast',
     seo: {
-      title: 'Pré-Fabricação em Betão — Postes, Blocos, Tubos e Lancis',
+      title: 'Pré-Fabricação em Betão — Postes, Blocos e Lancis',
       description:
         'Postes, blocos, tubos, lancis e elementos pré-fabricados de betão produzidos pela ACAIL Angola em Mazozo, Icolo e Bengo, para construção e infraestruturas.',
     },

@@ -16,13 +16,12 @@ const SOFT = 'rgba(169,193,224,0.35)'
 interface Props {
   visual: VisualKey
   label?: string
-  index?: string
   className?: string
   /** Controla o enquadramento (ex.: hero usa 'slice' para preencher). */
   fit?: 'slice' | 'meet'
 }
 
-export function TechnicalVisual({ visual, label, index, className, fit = 'slice' }: Props) {
+export function TechnicalVisual({ visual, label, className, fit = 'slice' }: Props) {
   const gid = `tv${useId().replace(/[^a-zA-Z0-9]/g, '')}`
   return (
     <svg
@@ -52,14 +51,6 @@ export function TechnicalVisual({ visual, label, index, className, fit = 'slice'
         {drawings[visual]}
       </g>
       <CropMarks />
-      {(label || index) && (
-        <g fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace" fontSize="13" letterSpacing="2.5">
-          <text x="40" y="560" fill="rgba(255,255,255,0.55)">
-            {index ? `${index}  /  ` : ''}
-            {label?.toUpperCase()}
-          </text>
-        </g>
-      )}
     </svg>
   )
 }
