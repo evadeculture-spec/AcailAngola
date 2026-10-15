@@ -5,7 +5,7 @@ import { Footer } from '@/components/layout/footer'
 import { Header } from '@/components/layout/header'
 import { JsonLd } from '@/components/ui/json-ld'
 import { organizationJsonLd, websiteJsonLd } from '@/lib/seo'
-import { siteConfig } from '@/lib/site'
+import { noIndex, siteConfig } from '@/lib/site'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: siteConfig.defaultDescription,
   },
   twitter: { card: 'summary_large_image' },
-  robots: { index: true, follow: true },
+  robots: noIndex ? { index: false, follow: false } : { index: true, follow: true },
 }
 
 export const viewport: Viewport = {
