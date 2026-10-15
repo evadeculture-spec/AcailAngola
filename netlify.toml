@@ -1,0 +1,8 @@
+# Configuração Netlify (Next.js via OpenNext / @netlify/plugin-nextjs, instalado automaticamente).
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NEXT_TELEMETRY_DISABLED = "1"
